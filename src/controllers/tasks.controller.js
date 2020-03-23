@@ -1,4 +1,4 @@
-const {getConnection} = require('../database');
+const { getConnection } = require('../database');
 const { v4 } = require('uuid');
 
 const getTasks = (req, res) => {
@@ -14,22 +14,22 @@ const getTask = (req, res) => {
 const createTasks = (req, res) => {
     const newTask = {
         id: v4(),
-        title: req.body.title,
-        description: req.body.description
+        title,
+        description
     };
     getConnection().get('tasks').push(newTask).write();
     res.json(newTask);
 };
 
 const updateTask = async (req, res) => {
-    const result = await getConnection().get('tasks').find({id: req.params.id})
+    const result = await getConnection().get('tasks').find({ id: req.params.id })
         .assign(req.body)
         .write();
     res.json(result);
 };
 
 const deleteTask = (req, res) => {
-    const result = getConnection().get('tasks').remove({id: req.params.id}).write();
+    const result = getConnection().get('tasks').remove({ id: req.params.id }).write();
     res.json(result);
 };
 

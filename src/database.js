@@ -9,7 +9,6 @@ async function createConnection() {
     db.defaults({tasks: []}).write();
 }
 
-
 const getConnection = () => db;
 
 module.exports = {

@@ -1,7 +1,13 @@
 const { Router } = require('express');
 const router = Router();
 
-const { getTasks, createTasks, getTask, updateTask, deleteTask }  = require('../controllers/tasks.controller');
+const {
+    getTasks,
+    createTasks,
+    getTask,
+    updateTask,
+    deleteTask
+}  = require('../controllers/tasks.controller');
 
 router.get('/tasks', getTasks);
 router.get('/tasks/:id', getTask);
